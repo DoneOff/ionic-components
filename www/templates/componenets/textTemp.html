@@ -2,8 +2,59 @@
     <ion-content>
         <div class="bar bar-header bar-balanced">
             <button class="button icon-left ion-chevron-left button-clear button-white" ng-click="GoBack()"></button>
-            <h1 class="title">文本框</h1>
+            <h1 class="title">Text Input</h1>
         </div>
-        <div></div>
+        <div class="list has-header">
+            <!--Placeholder Labels-->
+            <div>
+                <div class="item item-divider">
+                    Placeholder Labels
+                </div>
+                <label class="item item-input">
+                    <input type="text" placeholder="UserName"/>
+                </label>
+            </div>
+            <!--Inline Labels-->
+            <div>
+                <div class="item item-divider">
+                    Inline Labels
+                </div>
+                <label class="item item-input">
+                    <span class="input-label" >UserName</span>
+                    <input type="text" placeholder="UserName"/>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">PassWord</span>
+                    <input type="password" placeholder="password"/>
+                </label>
+            </div>
+            <!--Stacked Labels-->
+            <div>
+                <div class="item item-divider">
+                    Stacked Labels
+                </div>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label" >First Name</span>
+                    <input type="text" placeholder="First Name"/>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Last Name</span>
+                    <input type="text" placeholder="Last Name"/>
+                </label>
+            </div>
+            <!--Floating Labels-->
+            <div>
+                <div class="item item-divider">Floating Labels</div>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Favorite Food</span>
+                    <input type="text" placeholder="Favorite Food"/>
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Favorite Drink</span>
+                    <input type="text" placeholder="Favorite Drink"/>
+                </label>
+            </div>
+          
+        </div>
     </ion-content>
 </ion-view>
