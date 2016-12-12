@@ -3,10 +3,10 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers', 'ion-datetime-picker'])
 
     .run(function ($ionicPlatform, $location, $timeout, $rootScope,
-        $ionicHistory, $state) {
+        $ionicHistory, $state, $ionicPickerI18n) {
         $ionicPlatform.ready(function () {
             if (window.cordova && window.cordova.plugins.Keyboard) {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -22,6 +22,14 @@ angular.module('starter', ['ionic', 'starter.controllers'])
                 StatusBar.styleDefault();
             }
         });
+
+        //时间控件自定义设定
+        $ionicPickerI18n.weekdays = ["日", "一", "二", "三", "四", "五", "六"];
+        $ionicPickerI18n.months = ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"];
+        $ionicPickerI18n.ok = "确定";
+        $ionicPickerI18n.cancel = "取消";
+        $ionicPickerI18n.okClass = "button-balanced";
+        // $ionicPickerI18n.cancelClass = "button-balanced";
     })
     //.constant('$ionicLoadingConfig', {
     //    template: "<ion-spinner icon=\"bubbles\" class=\"spinner-balanced\"></ion-spinner>"

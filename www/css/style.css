@@ -1,1 +1,16 @@
 /* Empty. Add your own CSS if you like */
+.ion-datetime-picker .calendar .day.selected, .ion-datetime-picker .calendar .day.selected:hover, .ion-datetime-picker .calendar .day.selected.activated{
+    background-color: #33cd5f;
+}
+
+.ion-datetime-picker .month-year .button{
+    color: #33cd5f;
+}
+
+.ion-datetime-picker .calendar .day:hover, .ion-datetime-picker .calendar .day.activated, .ion-datetime-picker .calendar .day.today:hover, .ion-datetime-picker .calendar .day.today.activated{
+    background-color:lightgreen;
+}
+
+.ion-datetime-picker .time-buttons .button{
+    color: #33cd5f;
+}

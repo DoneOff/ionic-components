@@ -4,6 +4,34 @@
             <button class="button icon-left ion-chevron-left button-clear button-white" ng-click="GoBack()"></button>
             <h1 class="title">DateTime</h1>
         </div>
-        <div></div>
+        <div class="list has-header">
+
+            <div>
+                <div class="item item-divider">
+                    Native Ionic Date:
+                </div>
+                <label class="item item-input">
+                <span class="input-label" >Date:</span>
+                <input  type="date"/>
+            </label>
+            </div>
+            <div>
+                <div class="item item-divider">
+                    ion-datetime-picker Date:
+                </div>
+                <div class="item item-input" title="'选择日期'" ion-datetime-picker date ng-model="dateValue">
+                    <span class="input-label">Date:</span>
+                    <span class="input-label">
+                    {{dateValue| date:"yyyy-MM-dd"}}
+                    </span>
+                </div>
+                <div class="item item-input" title="'选择日期'" ion-datetime-picker datetime ng-model="dateTimeValue">
+                    <span class="input-label">DateTime:</span>
+                    <span class="input-label">
+                    {{dateTimeValue| date:"yyyy-MM-dd HH:mm:ss" }}
+                    </span>
+                </div>
+            </div>
+        </div>
     </ion-content>
 </ion-view>
