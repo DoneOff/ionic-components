@@ -46,7 +46,8 @@ angular.module('starter', ['ionic','starter.controllers'])
     $stateProvider
     .state('home',{
       url:'/home',
-      templateUrl:'templates/home.html'
+      templateUrl:'templates/home.html',
+      controller:'homeCtrl'
     })
     .state('textTemp', {
         url: '/textTemp',
