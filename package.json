@@ -1,7 +1,7 @@
 {
-  "name": "blankapp",
+  "name": "ioniccomponent",
   "version": "1.1.1",
-  "description": "BlankApp: An Ionic project",
+  "description": "IonicComponent: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-concat": "^2.2.0",

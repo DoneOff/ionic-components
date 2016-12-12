@@ -87,5 +87,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ion-datetime-picker'
                 templateUrl: 'templates/componenets/dateTimeTemp.html',
                 controller: 'dateTimeTempCtrl'
             })
-        // $urlRouterProvider.otherwise("/home");
+        $urlRouterProvider.otherwise("/home");
     })

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.blankapp531563" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>BlankApp</name>
+  <name>IonicComponent</name>
   <description>
         An Ionic Framework and Cordova project.
+        IonicComponent
     </description>
-  <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
+  <author email="dsf_jyf@qq.com" href="dsf_jyf@qq.com">
+      FeiFei Jin
     </author>
   <content src="index.html"/>
   <access origin="*"/>
