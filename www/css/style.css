@@ -19,3 +19,8 @@
 .my-custom-popup .popup-body{
     padding:1px;
 }
+
+.bar-footer .foot-button{
+    padding: 0 40px;
+    margin-left: 10px;
+}

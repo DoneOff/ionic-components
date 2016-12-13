@@ -92,5 +92,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ion-datetime-picker'
                 templateUrl: 'templates/components/timeSpanTemp.html',
                 controller: 'timeSpanTempCtrl'
             })
+            .state('footBarTemp', {
+                url: '/footBarTemp',
+                templateUrl: 'templates/components/footBarTemp.html',
+                controller: 'footBarTempCtrl'
+            })
         $urlRouterProvider.otherwise("/home");
     })
