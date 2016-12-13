@@ -1,0 +1,28 @@
+<ion-view>
+    <ion-content>
+        <div class="bar bar-header bar-balanced">
+            <button class="button icon-left ion-chevron-left button-clear button-white" ng-click="GoBack()"></button>
+            <h1 class="title">TimeSpan</h1>
+        </div>
+        <div class="list has-header">
+            <div>
+                <div class="item item-divider">
+                    ActionSheet TimeSpan(Not Implement)
+                </div>
+                <label class="item item-input" >
+                    <span class="input-label">Days:</span>
+                    <span class="input-label">3天2小时50分6秒</span>
+                </label>
+            </div>
+            <div>
+                <div class="item item-divider">
+                    Popup TimeSpan
+                </div>
+                <label class="item item-input" ng-click="showPopup()">
+                    <span class="input-label">Days:</span>
+                    <span class="input-label">{{timeSpan.day}}天 {{timeSpan.hour}}小时 {{timeSpan.min}}分 {{timeSpan.second}}秒</span>
+                </label>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

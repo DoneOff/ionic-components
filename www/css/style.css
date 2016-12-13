@@ -1,4 +1,4 @@
-/* Empty. Add your own CSS if you like */
+/*时间控件的自定义css*/
 .ion-datetime-picker .calendar .day.selected, .ion-datetime-picker .calendar .day.selected:hover, .ion-datetime-picker .calendar .day.selected.activated{
     background-color: #33cd5f;
 }
@@ -13,4 +13,9 @@
 
 .ion-datetime-picker .time-buttons .button{
     color: #33cd5f;
+}
+
+/*时间段的popup的自定义css*/
+.my-custom-popup .popup-body{
+    padding:1px;
 }

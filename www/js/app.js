@@ -59,33 +59,38 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ion-datetime-picker'
             })
             .state('textTemp', {
                 url: '/textTemp',
-                templateUrl: 'templates/componenets/textTemp.html',
+                templateUrl: 'templates/components/textTemp.html',
                 controller: 'textTempCtrl'
             })
             .state('checkBoxTemp', {
                 url: '/checkBoxTemp',
-                templateUrl: 'templates/componenets/checkBoxTemp.html',
+                templateUrl: 'templates/components/checkBoxTemp.html',
                 controller: 'checkBoxTempCtrl'
             })
             .state('radioButtonTemp', {
                 url: '/radioButtonTemp',
-                templateUrl: 'templates/componenets/radioButtonTemp.html',
+                templateUrl: 'templates/components/radioButtonTemp.html',
                 controller: 'radioButtonTempCtrl'
             })
             .state('selectTemp', {
                 url: '/selectTemp',
-                templateUrl: 'templates/componenets/selectTemp.html',
+                templateUrl: 'templates/components/selectTemp.html',
                 controller: 'selectTempCtrl'
             })
             .state('textAreaTemp', {
                 url: '/textAreaTemp',
-                templateUrl: 'templates/componenets/textAreaTemp.html',
+                templateUrl: 'templates/components/textAreaTemp.html',
                 controller: 'textAreaTempCtrl'
             })
             .state('dateTimeTemp', {
                 url: '/dateTimeTemp',
-                templateUrl: 'templates/componenets/dateTimeTemp.html',
+                templateUrl: 'templates/components/dateTimeTemp.html',
                 controller: 'dateTimeTempCtrl'
+            })
+            .state('timeSpanTemp', {
+                url: '/timeSpanTemp',
+                templateUrl: 'templates/components/timeSpanTemp.html',
+                controller: 'timeSpanTempCtrl'
             })
         $urlRouterProvider.otherwise("/home");
     })
