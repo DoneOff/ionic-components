@@ -25,3 +25,20 @@
     padding: 0 40px;
     margin-left: 10px;
 }
+
+.bar-footer .foot-button-full{
+    width: inherit;
+    padding: 0px;
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.bar-footer-button{
+    padding: 0px;
+    height:32px;
+    background: transparent;
+}
+.bar-footer .activated{
+    border-color:transparent; 
+    background-color: transparent; 
+}

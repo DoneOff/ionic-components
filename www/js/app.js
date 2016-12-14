@@ -97,5 +97,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ion-datetime-picker'
                 templateUrl: 'templates/components/footBarTemp.html',
                 controller: 'footBarTempCtrl'
             })
+            .state('mutipleSelectTemp', {
+                url: '/mutipleSelectTemp',
+                templateUrl: 'templates/components/mutipleSelectTemp.html',
+                controller: 'mutipleSelectTempCtrl'
+            })
         $urlRouterProvider.otherwise("/home");
     })
