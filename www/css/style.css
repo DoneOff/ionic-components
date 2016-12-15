@@ -42,3 +42,15 @@
     border-color:transparent; 
     background-color: transparent; 
 }
+
+.item-divider a{
+text-decoration: none;
+}
+
+.item-label{
+    padding: 20px 100px 20px 0px;
+}
+
+.item-label span{
+    padding-left: 20px;
+}

@@ -3,11 +3,26 @@
         <button class="button icon-left ion-chevron-left button-clear button-white" ng-click="GoBack()"></button>
         <h1 class="title">Mutiple Select</h1>
     </div>
-    <ion-content class='has-header has-footer'>
-        <h1 style="margin-top:200px" align="center">
-        </h1>
+    <ion-content class="has-header has-footer">
+        <div class="item item-divider">
+           <span ng-repeat="dept in deptNav" ><a ng-click="navClick(dept.id,$index)" >{{dept.name}}</a> > </span> 
+        </div>
+        <div ng-repeat="child in data.children" class="item item-icon-right">
+            <label class="item-label" ng-click="deptClick($index)">
+            <input type="radio" name="depts" ng-model="child.checked"  />
+            <span>{{child.deptName}}</span>
+            </label>
+            <i ng-show="!child.isLeaf" class="icon ion-ios-arrow-right" ng-click="showChild($index)"></i>
+        </div>
+        <div class="item item-divider"></div>
+        <div ng-repeat="child in data.users" class="item ">
+            <label class="item-label" ng-click="addItem(child)" >
+            <input type="checkbox"  name="users" ng-model="child.checked" />
+            <span>{{child.name}}</span>
+            </label>
+        </div>
     </ion-content>
-    <div class="bar bar-footer bar-footer-button">
-        <button class="button foot-button-full ion-ios-arrow-up" ng-click="click()"></button>
+    <div class="bar bar-footer bar-footer-button" ng-show="items.length!=0">
+        <button class="button foot-button-full ion-ios-arrow-up" ng-click="selected()"></button>
     </div>
 </ion-view>
