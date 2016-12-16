@@ -5,18 +5,19 @@
     </div>
     <ion-content class="has-header has-footer">
         <div class="item item-divider">
-           <span ng-repeat="dept in deptNav" ><a ng-click="navClick(dept.id,$index)" >{{dept.name}}</a> > </span> 
+            <span ng-repeat="dept in deptNav"><a ng-click="navClick(dept.id,$index)" >{{dept.name}}</a> > </span>
         </div>
         <div ng-repeat="child in data.children" class="item item-icon-right">
             <label class="item-label" ng-click="deptClick($index)">
-            <input type="radio" name="depts" ng-model="child.checked"  />
+            <input  type="radio" name="depts" ng-if="child.checked" checked/>
+            <input  ng-if="!child.checked" type="radio" name="depts"/>
             <span>{{child.deptName}}</span>
             </label>
             <i ng-show="!child.isLeaf" class="icon ion-ios-arrow-right" ng-click="showChild($index)"></i>
         </div>
         <div class="item item-divider"></div>
         <div ng-repeat="child in data.users" class="item ">
-            <label class="item-label" ng-click="addItem(child)" >
+            <label class="item-label" ng-click="addItem(child)">
             <input type="checkbox"  name="users" ng-model="child.checked" />
             <span>{{child.name}}</span>
             </label>

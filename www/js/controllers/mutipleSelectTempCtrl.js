@@ -6,7 +6,7 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
         pid: null,
         deptName: '我的公司',
         isLeaf: false,
-        checked: false,
+        checked: true,
         children: [
             {
                 id: '2',
@@ -102,9 +102,10 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
         pid: organization.pid
     };
     $scope.deptNav.push(rootNav);
-
+    //当前部门用户
+    var currentUsers = [];
+    //页面绑定数据
     $scope.data = organization;
-
     //已选
     $scope.items = [];
     //已选
@@ -119,12 +120,18 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
 
     //部门点击事件
     $scope.deptClick = function (index) {
+        if (currentUsers.length < $scope.deptNav.length) {
+            currentUsers.push($scope.data.users);
+        }
         $scope.data.users = $scope.data.children[index].users;
         $scope.data.children[index].checked = true;
     }
 
     //加载子部门
     $scope.showChild = function (index) {
+        if (currentUsers.length < $scope.deptNav.length) {
+            currentUsers.push($scope.data.users);
+        }
         if (!$scope.data.isLeaf) {
             $scope.data = $scope.data.children[index];
             var childNav = {
@@ -134,7 +141,6 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
                 pid: $scope.data.pid
             };
             $scope.deptNav.push(childNav);
-
         }
     }
     //添加
@@ -151,6 +157,11 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
         } else {
             getDept(organization, deptId);
         };
+        if (currentUsers.length == $scope.deptNav.length)
+            $scope.data.users = currentUsers[index];
+        $scope.data.children.forEach(function (n, i) {
+            n.checked = false;
+        });
         $scope.deptNav = $scope.deptNav.slice(0, index + 1);
     }
     //获取部门数据
