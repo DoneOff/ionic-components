@@ -54,3 +54,19 @@ text-decoration: none;
 .item-label span{
     padding-left: 20px;
 }
+
+.modal-backdrop-bg {
+    transition: opacity 300ms ease-in-out;
+    -webkit-transition: opacity 300ms ease-in-out;
+    background-color: #000;
+    opacity: 0;
+}
+
+.active .modal-backdrop-bg {
+    opacity: 0.5;
+}
+
+.i-right{
+    float: right;
+    padding-right: 25px;
+}

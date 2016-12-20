@@ -1,4 +1,4 @@
-module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, $ionicTabsDelegate, $state, $ionicGesture, $ionicBackdrop, $timeout,$ionicModal ,
+module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, $ionicTabsDelegate, $state, $ionicGesture, $ionicBackdrop, $timeout, $ionicModal,
     $ionicSideMenuDelegate) {
     //组织数据
     var organization = {
@@ -109,19 +109,9 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
     //已选
     $scope.items = [];
 
-
     //已选
-    $scope.selectedTemp = function () {
-        var hideSheet = $ionicActionSheet.show({
-            buttons: $scope.items,
-            buttonClicked: function (index, button) {
-                return false;
-            },
-            cssClass: 'selected-sheet'
-        });
-    };
-    
-    $scope.selectedModalShow = function(){
+    $scope.selectedModalShow = function () {
+        $scope.selectedName = getSelectedName();
         $scope.modal.show();
     }
     //部门点击事件
@@ -152,18 +142,22 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
 
     //添加
     $scope.addItem = function (item) {
-        var i = {
-            id: item.id,
-            text: '<span>'+item.name+'</span><span class="del">删除</span>',
-            item: item
-        };
+        var i = item;
         if (item.checked) {
             $scope.items.push(i);
         } else {
             removeItem($scope.items, item);
         }
     };
-
+    //删除已选
+    $scope.delItem = function (index) {
+        $scope.items[index].checked = false;
+        $scope.items.splice(index, 1);
+        $scope.selectedName = getSelectedName();
+        if ($scope.items.length == 0) {
+              $scope.closeModal();
+        }
+    }
     //部门导航点击事件
     $scope.navClick = function (deptId, index) {
         if (deptId == rootNav.id) {
@@ -177,6 +171,11 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
             n.checked = false;
         });
         $scope.deptNav = $scope.deptNav.slice(0, index + 1);
+    }
+    //关闭当前Modal
+    $scope.closeModal = function () {
+        $scope.modal.remove();
+        initModal();
     }
     //获取部门数据
     var getDept = function (obj, id) {
@@ -203,23 +202,34 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
                 arry.splice(i, 1);
             }
         });
-    }
+    };
 
-   //初始化SelectedModal
-    $ionicModal.fromTemplateUrl('selectedTemp.html', {
-        scope: $scope,
-        animation: 'slide-in-up',
-        focusFirstInput: true
-    }).then(function (modal) {
-        $scope.modal = modal;
-    });
+    var getSelectedName = function () {
+        var names = '已选：';
+        if ($scope.items.length < 3) {
+            $scope.items.forEach(function (n, i) {
+                names += n.name + '、';
+            });
+            names = names.substring(0, names.length - 1);
+        } else {
+            names += $scope.items[0].name + '、' + $scope.items[1].name + '...等人';
+        }
+        return names;
+    };
+
+    //初始化模板
+    var initModal = function () {
+        $ionicModal.fromTemplateUrl('selectedTemp.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.modal = modal;
+        });
+    };
+    initModal();
+
     // Cleanup when we're done with it!
     $scope.$on('$destroy', function () {
         $scope.modal.remove();
-        $scope.unRegisterAutoRefresh();
     });
-});
-
-module.controller('selectedTempCtrl',function($scope){
-
 });

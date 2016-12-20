@@ -30,7 +30,21 @@
 
 
 <script id="selectedTemp.html" type="text/ng-template">
-    <ion-modal-view ng-controller="selectedTempCtrl">
-
+    <ion-modal-view style="top:52.5%" >
+    <ion-content style="bottom:59%" >
+            <ion-list>
+                <ion-item ng-repeat="item in items" class="item-icon-right" >
+                    <div>
+                        <span>{{item.name}}</span><i class="icon ion-close i-right" ng-click="delItem($index)"></i>
+                    </div>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+        <div class="bar bar-footer" style="bottom:52.5%">
+            <span class="title" style="text-align:left;font-size: 15px;">{{selectedName}}</span>
+            <div class="buttons" ng-click="doSomething()">
+            <button class="button button-balanced" ng-click="closeModal()" >完成</button>
+            </div>
+            </div>
     </ion-modal-view>
 </script>
