@@ -1,4 +1,4 @@
-module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, $ionicTabsDelegate, $state, $ionicGesture,
+module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, $ionicTabsDelegate, $state, $ionicGesture, $ionicBackdrop, $timeout,$ionicModal ,
     $ionicSideMenuDelegate) {
     //组织数据
     var organization = {
@@ -108,16 +108,22 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
     $scope.data = organization;
     //已选
     $scope.items = [];
+
+
     //已选
-    $scope.selected = function () {
+    $scope.selectedTemp = function () {
         var hideSheet = $ionicActionSheet.show({
             buttons: $scope.items,
             buttonClicked: function (index, button) {
-                return true;
-            }
+                return false;
+            },
+            cssClass: 'selected-sheet'
         });
     };
-
+    
+    $scope.selectedModalShow = function(){
+        $scope.modal.show();
+    }
     //部门点击事件
     $scope.deptClick = function (index) {
         if (currentUsers.length < $scope.deptNav.length) {
@@ -143,13 +149,21 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
             $scope.deptNav.push(childNav);
         }
     }
+
     //添加
     $scope.addItem = function (item) {
         var i = {
-            text: item.name
+            id: item.id,
+            text: '<span>'+item.name+'</span><span class="del">删除</span>',
+            item: item
         };
-        $scope.items.push(i);
-    }
+        if (item.checked) {
+            $scope.items.push(i);
+        } else {
+            removeItem($scope.items, item);
+        }
+    };
+
     //部门导航点击事件
     $scope.navClick = function (deptId, index) {
         if (deptId == rootNav.id) {
@@ -182,4 +196,30 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
         }
     }
 
-})
+    //删除已选择的对象
+    var removeItem = function (arry, obj) {
+        arry.forEach(function (n, i) {
+            if (n.id == obj.id) {
+                arry.splice(i, 1);
+            }
+        });
+    }
+
+   //初始化SelectedModal
+    $ionicModal.fromTemplateUrl('selectedTemp.html', {
+        scope: $scope,
+        animation: 'slide-in-up',
+        focusFirstInput: true
+    }).then(function (modal) {
+        $scope.modal = modal;
+    });
+    // Cleanup when we're done with it!
+    $scope.$on('$destroy', function () {
+        $scope.modal.remove();
+        $scope.unRegisterAutoRefresh();
+    });
+});
+
+module.controller('selectedTempCtrl',function($scope){
+
+});

@@ -10,7 +10,7 @@
         <div ng-repeat="child in data.children" class="item item-icon-right">
             <label class="item-label" ng-click="deptClick($index)">
             <input  type="radio" name="depts" ng-if="child.checked" checked/>
-            <input  ng-if="!child.checked" type="radio" name="depts"/>
+            <input   type="radio" name="depts" ng-if="!child.checked"/>
             <span>{{child.deptName}}</span>
             </label>
             <i ng-show="!child.isLeaf" class="icon ion-ios-arrow-right" ng-click="showChild($index)"></i>
@@ -24,6 +24,13 @@
         </div>
     </ion-content>
     <div class="bar bar-footer bar-footer-button" ng-show="items.length!=0">
-        <button class="button foot-button-full ion-ios-arrow-up" ng-click="selected()"></button>
+        <button class="button foot-button-full ion-ios-arrow-up" ng-click="selectedModalShow()"></button>
     </div>
 </ion-view>
+
+
+<script id="selectedTemp.html" type="text/ng-template">
+    <ion-modal-view ng-controller="selectedTempCtrl">
+
+    </ion-modal-view>
+</script>
