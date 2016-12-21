@@ -1,4 +1,4 @@
-module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, $ionicTabsDelegate, $state, $ionicGesture, $ionicBackdrop, $timeout, $ionicModal,
+module.controller('mutipleSelectTempCtrl', function($scope, $ionicActionSheet, $ionicTabsDelegate, $state, $ionicGesture, $ionicBackdrop, $timeout, $ionicModal,
     $ionicSideMenuDelegate) {
     //组织数据
     var organization = {
@@ -7,8 +7,7 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
         deptName: '我的公司',
         isLeaf: false,
         checked: true,
-        children: [
-            {
+        children: [{
                 id: '2',
                 pid: '1',
                 deptName: '产品中心',
@@ -39,26 +38,24 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
                 deptName: '营销中心',
                 isLeaf: false,
                 checked: false,
-                children: [
-                    {
+                children: [{
                         id: '5',
                         pid: '4',
                         deptName: '营销部',
                         isLeaf: false,
-                        children: [
-                            {
-                                id: '7',
-                                pid: '4',
-                                deptName: '营销部',
-                                isLeaf: true,
-                                children: null,
-                                checked: false,
-                                users: [
-                                    { id: '4', name: '曹仁' },
-                                    { id: '5', name: '曹丕' },
-                                    { id: '6', name: '曹植' }
-                                ]
-                            }],
+                        children: [{
+                            id: '7',
+                            pid: '4',
+                            deptName: '营销部',
+                            isLeaf: true,
+                            children: null,
+                            checked: false,
+                            users: [
+                                { id: '4', name: '曹仁' },
+                                { id: '5', name: '曹丕' },
+                                { id: '6', name: '曹植' }
+                            ]
+                        }],
                         checked: false,
                         users: [
                             { id: '4', name: '荀彧' },
@@ -110,12 +107,12 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
     $scope.items = [];
 
     //已选
-    $scope.selectedModalShow = function () {
-        $scope.selectedName = getSelectedName();
-        $scope.modal.show();
-    }
-    //部门点击事件
-    $scope.deptClick = function (index) {
+    $scope.selectedModalShow = function() {
+            $scope.selectedName = getSelectedName();
+            $scope.modal.show();
+        }
+        //部门点击事件
+    $scope.deptClick = function(index) {
         if (currentUsers.length < $scope.deptNav.length) {
             currentUsers.push($scope.data.users);
         }
@@ -124,7 +121,7 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
     }
 
     //加载子部门
-    $scope.showChild = function (index) {
+    $scope.showChild = function(index) {
         if (currentUsers.length < $scope.deptNav.length) {
             currentUsers.push($scope.data.users);
         }
@@ -141,7 +138,7 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
     }
 
     //添加
-    $scope.addItem = function (item) {
+    $scope.addItem = function(item) {
         var i = item;
         if (item.checked) {
             $scope.items.push(i);
@@ -153,7 +150,7 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
     };
 
     //删除已选
-    $scope.delItem = function (index) {
+    $scope.delItem = function(index) {
         $scope.items[index].checked = false;
         $scope.items.splice(index, 1);
         $scope.selectedName = getSelectedName();
@@ -163,7 +160,7 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
     };
 
     //部门导航点击事件
-    $scope.navClick = function (deptId, index) {
+    $scope.navClick = function(deptId, index) {
         if (deptId == rootNav.id) {
             $scope.data = organization;
         } else {
@@ -171,36 +168,36 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
         };
         if (currentUsers.length == $scope.deptNav.length)
             $scope.data.users = currentUsers[index];
-        $scope.data.children.forEach(function (n, i) {
+        $scope.data.children.forEach(function(n, i) {
             n.checked = false;
         });
         $scope.deptNav = $scope.deptNav.slice(0, index + 1);
     };
 
     //关闭已选Modal
-    $scope.closeModal = function () {
+    $scope.closeModal = function() {
         $scope.modal.hide();
     };
     //打开搜索Moda
-    $scope.goToSeach = function () {
+    $scope.goToSeach = function() {
         $scope.searchModal.show();
     };
     //关闭搜索Modal
-    $scope.closeSearchModal = function () {
-        $scope.searchModal.hide();
-    }
-    //获取部门数据
-    var getDept = function (obj, id) {
+    $scope.closeSearchModal = function() {
+            $scope.searchModal.hide();
+        }
+        //获取部门数据
+    var getDept = function(obj, id) {
         var success = false;
         if (obj.children) {
-            obj.children.forEach(function (n, i) {
+            obj.children.forEach(function(n, i) {
                 if (n.id == id) {
                     $scope.data = n;
                     success = true;
                 }
             });
             if (!success) {
-                obj.children.forEach(function (n, i) {
+                obj.children.forEach(function(n, i) {
                     getDept(n, n.id);
                 });
             }
@@ -208,8 +205,8 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
     };
 
     //删除已选择的对象
-    var removeItem = function (arry, obj) {
-        arry.forEach(function (n, i) {
+    var removeItem = function(arry, obj) {
+        arry.forEach(function(n, i) {
             if (n.id == obj.id) {
                 arry.splice(i, 1);
             }
@@ -217,10 +214,10 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
     };
 
     //获取已选名称
-    var getSelectedName = function () {
+    var getSelectedName = function() {
         var names = '已选：';
         if ($scope.items.length < 3) {
-            $scope.items.forEach(function (n, i) {
+            $scope.items.forEach(function(n, i) {
                 names += n.name + '、';
             });
             names = names.substring(0, names.length - 1);
@@ -236,12 +233,12 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
     };
 
     //初始化模板
-    var initModal = function () {
+    var initModal = function() {
         //已选模板
         $ionicModal.fromTemplateUrl('selectedTemp.html', {
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function (modal) {
+        }).then(function(modal) {
             $scope.modal = modal;
         });
 
@@ -249,13 +246,13 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
         $ionicModal.fromTemplateUrl('searchTemp.html', {
             scope: $scope,
             animation: 'slide-in-up'
-        }).then(function (modal) {
+        }).then(function(modal) {
             $scope.searchModal = modal;
         });
     };
     initModal();
 
-    $scope.$on('$destroy', function () {
+    $scope.$on('$destroy', function() {
         $scope.modal.remove();
     });
 });
