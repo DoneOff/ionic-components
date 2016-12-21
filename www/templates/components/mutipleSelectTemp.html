@@ -3,7 +3,15 @@
         <button class="button icon-left ion-chevron-left button-clear button-white" ng-click="GoBack()"></button>
         <h1 class="title">Mutiple Select</h1>
     </div>
-    <ion-content class="has-header has-footer">
+    <ion-content class="has-header  has-footer">
+        <div id="search-bar">
+            <div class="item item-input-inset">
+                <label class="item-input-wrapper" id="search-input">
+                    <i class="icon ion-search placeholder-icon"></i>
+                    <input type="text" placeholder="搜索" ng-focus="goToSeach()" style="height:32px;">
+</label>
+            </div>
+        </div>
         <div class="item item-divider">
             <span ng-repeat="dept in deptNav"><a ng-click="navClick(dept.id,$index)" >{{dept.name}}</a> > </span>
         </div>
@@ -23,17 +31,23 @@
             </label>
         </div>
     </ion-content>
-    <div class="bar bar-footer bar-footer-button" ng-show="items.length!=0">
-        <button class="button foot-button-full ion-ios-arrow-up" ng-click="selectedModalShow()"></button>
+    <div class="bar bar-footer" ng-show="items.length!=0">
+        <span class="title" style="text-align:left;font-size: 15px;">{{selectedName}}</span>
+        <div class="buttons">
+            <button class="button button-balanced" ng-click="closeModal()">完成</button>
+        </div>
+        <i class="button foot-button-full ion-ios-arrow-up" ng-click="selectedModalShow()"></i>
+
+    </div>
     </div>
 </ion-view>
 
-
+<!--已选模板页-->
 <script id="selectedTemp.html" type="text/ng-template">
-    <ion-modal-view style="top:52.5%" >
-    <ion-content style="bottom:59%" >
+    <ion-modal-view style="top:52.5%">
+        <ion-content style="bottom:59%">
             <ion-list>
-                <ion-item ng-repeat="item in items" class="item-icon-right" >
+                <ion-item ng-repeat="item in items" class="item-icon-right">
                     <div>
                         <span>{{item.name}}</span><i class="icon ion-close i-right" ng-click="delItem($index)"></i>
                     </div>
@@ -43,8 +57,25 @@
         <div class="bar bar-footer" style="bottom:52.5%">
             <span class="title" style="text-align:left;font-size: 15px;">{{selectedName}}</span>
             <div class="buttons" ng-click="doSomething()">
-            <button class="button button-balanced" ng-click="closeModal()" >完成</button>
+                <button class="button button-balanced" ng-click="closeModal()">完成</button>
             </div>
+        </div>
+    </ion-modal-view>
+</script>
+
+<!--搜索模板页-->
+<script id="searchTemp.html" type="text/ng-template">
+    <ion-modal-view>
+        <form role="form">
+            <div class="bar bar-header item-input-inset">
+                <label class="item-input-wrapper">
+                    <i class="icon ion-ios-search placeholder-icon"></i>
+                    <input id="searchInput" type="search" placeholder="搜索"ng-model="searchKey" ng-change="doSearch(searchKey)">
+                </label>
+                <button class="button button-balanced" ng-click="closeSearchModal()">
+                    取消
+                </button>
             </div>
+        </form>
     </ion-modal-view>
 </script>

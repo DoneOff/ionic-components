@@ -27,10 +27,11 @@
 }
 
 .bar-footer .foot-button-full{
-    width: inherit;
+    width: 97%;
     padding: 0px;
-    border-color: transparent;
     background-color: transparent;
+    bottom: 40%;
+    position:absolute;
 }
 
 .bar-footer-button{

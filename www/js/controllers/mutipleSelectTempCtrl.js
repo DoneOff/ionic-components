@@ -148,16 +148,20 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
         } else {
             removeItem($scope.items, item);
         }
+        $scope.selectedName = getSelectedName();
+
     };
+
     //删除已选
     $scope.delItem = function (index) {
         $scope.items[index].checked = false;
         $scope.items.splice(index, 1);
         $scope.selectedName = getSelectedName();
         if ($scope.items.length == 0) {
-              $scope.closeModal();
+            $scope.closeModal();
         }
-    }
+    };
+
     //部门导航点击事件
     $scope.navClick = function (deptId, index) {
         if (deptId == rootNav.id) {
@@ -171,11 +175,19 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
             n.checked = false;
         });
         $scope.deptNav = $scope.deptNav.slice(0, index + 1);
-    }
-    //关闭当前Modal
+    };
+
+    //关闭已选Modal
     $scope.closeModal = function () {
-        $scope.modal.remove();
-        initModal();
+        $scope.modal.hide();
+    };
+    //打开搜索Moda
+    $scope.goToSeach = function () {
+        $scope.searchModal.show();
+    };
+    //关闭搜索Modal
+    $scope.closeSearchModal = function () {
+        $scope.searchModal.hide();
     }
     //获取部门数据
     var getDept = function (obj, id) {
@@ -193,7 +205,7 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
                 });
             }
         }
-    }
+    };
 
     //删除已选择的对象
     var removeItem = function (arry, obj) {
@@ -204,6 +216,7 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
         });
     };
 
+    //获取已选名称
     var getSelectedName = function () {
         var names = '已选：';
         if ($scope.items.length < 3) {
@@ -212,23 +225,36 @@ module.controller('mutipleSelectTempCtrl', function ($scope, $ionicActionSheet, 
             });
             names = names.substring(0, names.length - 1);
         } else {
-            names += $scope.items[0].name + '、' + $scope.items[1].name + '...等人';
+            for (var i = 0; i < 2; i++) {
+                names += $scope.items[i].name + '、';
+            }
+            names = names.substring(0, names.length - 1);
+            names += '...等人';
+            // names += $scope.items[0].name + '、' + $scope.items[1].name + '...等人';
         }
         return names;
     };
 
     //初始化模板
     var initModal = function () {
+        //已选模板
         $ionicModal.fromTemplateUrl('selectedTemp.html', {
             scope: $scope,
             animation: 'slide-in-up'
         }).then(function (modal) {
             $scope.modal = modal;
         });
+
+        //搜索模板
+        $ionicModal.fromTemplateUrl('searchTemp.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.searchModal = modal;
+        });
     };
     initModal();
 
-    // Cleanup when we're done with it!
     $scope.$on('$destroy', function () {
         $scope.modal.remove();
     });
