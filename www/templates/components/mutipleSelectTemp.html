@@ -34,7 +34,7 @@
     <div class="bar bar-footer" ng-show="items.length!=0">
         <span class="title" style="text-align:left;font-size: 15px;">{{selectedName}}</span>
         <div class="buttons">
-            <button class="button button-balanced" ng-click="closeModal()">完成</button>
+            <button class="button button-balanced" style="z-index:2;" ng-click="closeModal()">完成</button>
         </div>
         <i class="button foot-button-full ion-ios-arrow-up" ng-click="selectedModalShow()"></i>
     </div>
@@ -62,7 +62,7 @@
 
 <!--搜索模板页-->
 <script id="searchTemp.html" type="text/ng-template">
-    <ion-modal-view>
+    <ion-modal-view ng-controller="searchTempCtrl">
         <form role="form">
             <div class="bar bar-header item-input-inset">
                 <label class="item-input-wrapper">
@@ -74,5 +74,18 @@
                 </button>
             </div>
         </form>
+
+        <ion-content class="has-header">
+            <div class="item item-divider">
+                <span>搜索结果：</span>
+            </div>
+            <div ng-repeat="child in searchItems" class="item">
+                <label class="item-label" ng-click="addItem(child)">
+            <input type="checkbox"  name="users" ng-model="child.checked" />
+            <span ng-bind-html="child.name|highlightFilter:searchKey"></span>
+            </label>
+            </div>
+        </ion-content>
+
     </ion-modal-view>
 </script>

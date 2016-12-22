@@ -182,11 +182,8 @@ module.controller('mutipleSelectTempCtrl', function($scope, $ionicActionSheet, $
     $scope.goToSeach = function() {
         $scope.searchModal.show();
     };
-    //关闭搜索Modal
-    $scope.closeSearchModal = function() {
-            $scope.searchModal.hide();
-        }
-        //获取部门数据
+
+    //获取部门数据
     var getDept = function(obj, id) {
         var success = false;
         if (obj.children) {
@@ -255,4 +252,24 @@ module.controller('mutipleSelectTempCtrl', function($scope, $ionicActionSheet, $
     $scope.$on('$destroy', function() {
         $scope.modal.remove();
     });
+});
+
+module.controller('searchTempCtrl', function($scope) {
+
+    //关闭搜索Modal
+    $scope.closeSearchModal = function() {
+        $scope.searchItems = [];
+        $scope.searchModal.hide();
+    };
+    //搜索
+    $scope.doSearch = function() {
+        $scope.searchItems = [{ id: '4', name: '关羽' }, { id: '5', name: '赵云' }, { id: '6', name: '马超' }];
+        $scope.items.forEach(function(n, i) {
+            $scope.searchItems.forEach(function(k, j) {
+                if (n.id == k.id) {
+                    k.checked = true;
+                }
+            });
+        });
+    };
 });
