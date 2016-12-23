@@ -48,7 +48,7 @@ module.factory('mutipleSelectService', function(httpService) {
             return names;
         },
         getAll: function(url, param) {
-            var path = "";
+            // var path = "";
             return httpService.get(url, param);
         }
     };

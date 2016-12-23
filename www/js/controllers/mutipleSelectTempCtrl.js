@@ -94,10 +94,10 @@ module.controller('mutipleSelectTempCtrl', function($scope, $ionicActionSheet, $
                 { id: '3', name: '孙权' }
             ]
         };
-        //获取数据
-        // mutipleSelectService.getAll("", null).then(function(res) {
-        // organization = res;
-        // });
+        // 获取数据
+        mutipleSelectService.getAll("", null).then(function(res) {
+            organization = res;
+        });
         //部门导航
         $scope.deptNav = [];
         // 根部门
