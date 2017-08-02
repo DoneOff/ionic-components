@@ -95,9 +95,9 @@ module.controller('mutipleSelectTempCtrl', function($scope, $ionicActionSheet, $
             ]
         };
         // 获取数据
-        mutipleSelectService.getAll("", null).then(function(res) {
-            organization = res;
-        });
+        // mutipleSelectService.getAll("", null).then(function(res) {
+        //     organization = res;
+        // });
         //部门导航
         $scope.deptNav = [];
         // 根部门
